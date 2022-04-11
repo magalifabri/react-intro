@@ -1,10 +1,19 @@
 import React from 'react';
 
-function Todo({todo}) {
+function Todo({todo, toggleTodo}) {
+
+    const handleChecking = () => {
+        toggleTodo(todo.id);
+    }
+
     return (
         <div>
             <label>
-                <input type="checkbox" defaultChecked={todo.complete}/>
+                <input
+                    type="checkbox"
+                    defaultChecked={todo.complete}
+                    onChange={handleChecking}
+                />
                 {todo.name}
             </label>
         </div>
