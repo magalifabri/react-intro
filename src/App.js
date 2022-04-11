@@ -105,13 +105,24 @@ const App = () => {
     }
 
 
+    const editTodo = (todoId, newTodoName) => {
+        const newTodos = [...todos];
+        const todoToRename = newTodos.find(
+            todo => todo.id === todoId
+        );
+
+        todoToRename.name = newTodoName;
+        setTodos(newTodos);
+    }
+
+
     return (
         <>
-            <TodoList todos={todos} toggleTodo={toggleTodo}/>
+            <TodoList todos={todos} toggleTodo={toggleTodo} editTodo={editTodo}/>
             <input ref={todoNameRef} onKeyDown={handleKeyDown} type="text"/>
-            <button onClick={handleAddTodo}>Add Todo</button>
-            <button onClick={handleClearCompletedTodos}>Clear completed</button>
-            <button onClick={handleClearAllTodos}>Clear all todos</button>
+            <button onClick={handleAddTodo}>+</button>
+            <button onClick={handleClearCompletedTodos}>clear completed</button>
+            <button onClick={handleClearAllTodos}>clear all</button>
             <div>{getTodoStatusString()}</div>
         </>
     )

@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useState, useRef} from 'react';
 
-const Todo = ({todo, toggleTodo}) => {
+
+const Todo = ({todo, toggleTodo, editTodo}) => {
+    const valueRef = useRef();
+    const [edit, setEdit] = useState(false);
+
 
     const handleChecking = () => {
         toggleTodo(todo.id);
     }
+
+
+    const handleEdit = () => {
+        setEdit(!edit);
+
+        if (edit) {
+            const newTodoName = valueRef.current.value;
+
+            editTodo(todo.id, newTodoName);
+        }
+    }
+
 
     return (
         <div>
@@ -14,8 +30,11 @@ const Todo = ({todo, toggleTodo}) => {
                     defaultChecked={todo.complete}
                     onChange={handleChecking}
                 />
-                {todo.name}
+
+                {edit ? <input ref={valueRef} /> : todo.name}
             </label>
+
+            <button onClick={handleEdit}>✎</button>
         </div>
     );
 }
