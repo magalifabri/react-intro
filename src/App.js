@@ -58,7 +58,7 @@ function App() {
     }
 
 
-    const clearAllTodos = () => {
+    const handleClearAllTodos = () => {
         localStorage.clear();
     }
 
@@ -89,13 +89,22 @@ function App() {
     }
 
 
+    const handleClearCompletedTodos = () => {
+        const newTodos = todos.filter(
+            todo => !todo.complete
+        );
+
+        setTodos(newTodos);
+    }
+
+
     return (
         <>
             <TodoList todos={todos} toggleTodo={toggleTodo}/>
             <input ref={todoNameRef} type="text"/>
             <button onClick={handleAddTodo}>Add Todo</button>
-            <button>Clear completed</button>
-            <button onClick={clearAllTodos}>Clear all todos</button>
+            <button onClick={handleClearCompletedTodos}>Clear completed</button>
+            <button onClick={handleClearAllTodos}>Clear all todos</button>
             <div>{getTodoStatusString()}</div>
         </>
     )
