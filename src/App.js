@@ -1,25 +1,44 @@
-import React, {useState} from "react";
+// useState Hook lets us keep local state in a function component
+import React, {useState, useRef} from "react";
 import TodoList from "./TodoList";
 
 function App() {
-    const [todos, setTodos] = useState([
-        {
-            id: 1,
-            name: 'Todo 1',
+    const todoNameRef = useRef();
+    // useState() takes one argument: the initial state
+    // useState() returns two variables: the current state and a function to update the state
+    const [todos, setTodos] = useState([]);
+
+    const [idCounter, setIdCounter] = useState(1);
+
+    const getTodosWithNewTodoAdded = (newTodoName, prevTodos) => {
+        const id = idCounter;
+        setIdCounter(idCounter + 1);
+
+        return [...prevTodos, {
+            id: id,
+            name: newTodoName,
             complete: false,
-        },
-        {
-            id: 2,
-            name: 'Todo 2',
-            complete: false,
+        }];
+    }
+
+    const handleAddTodo = (event) => {
+        const name = todoNameRef.current.value;
+        // console.log(name);
+
+        if (name === '') {
+            return;
         }
-    ]);
+
+        setTodos(prevTodos => getTodosWithNewTodoAdded(name, prevTodos));
+
+        todoNameRef.current.value = '';
+    }
 
     return (
         <>
             <TodoList todos={todos}/>
-            <input type="text"/>
-            <button>Add Todo</button>
+            <input ref={todoNameRef} type="text"/>
+            <button onClick={handleAddTodo}>Add Todo</button>
             <button>Clear completed</button>
             <div>0 left Todos</div>
         </>
