@@ -98,10 +98,17 @@ const App = () => {
     }
 
 
+    const handleKeyDown = ({key}) => {
+        if (key === 'Enter') {
+            handleAddTodo();
+        }
+    }
+
+
     return (
         <>
             <TodoList todos={todos} toggleTodo={toggleTodo}/>
-            <input ref={todoNameRef} type="text"/>
+            <input ref={todoNameRef} onKeyDown={handleKeyDown} type="text"/>
             <button onClick={handleAddTodo}>Add Todo</button>
             <button onClick={handleClearCompletedTodos}>Clear completed</button>
             <button onClick={handleClearAllTodos}>Clear all todos</button>
