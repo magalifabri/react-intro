@@ -5,7 +5,7 @@ const LOCAL_STORAGE_TODOS_KEY = 'todos';
 const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
 
 
-function App() {
+const App = () => {
     const todoNameRef = useRef();
     const [todos, setTodos] = useState([]);
     const [idCounter, setIdCounter] = useState(0);

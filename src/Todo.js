@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Todo({todo, toggleTodo}) {
+const Todo = ({todo, toggleTodo}) => {
 
     const handleChecking = () => {
         toggleTodo(todo.id);

@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from "./Todo";
 
-function TodoList({todos, toggleTodo}) {
+const TodoList = ({todos, toggleTodo}) => {
     return (
         <div>
             {todos.map(todo => {
