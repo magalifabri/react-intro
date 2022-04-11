@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from "react";
 import TodoList from "./TodoList";
+
 const LOCAL_STORAGE_TODOS_KEY = 'todos';
 const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
 
@@ -43,7 +44,7 @@ function App() {
     }
 
 
-    const handleAddTodo = (event) => {
+    const handleAddTodo = () => {
         const newTodoName = todoNameRef.current.value;
 
         if (newTodoName === '') {
@@ -73,14 +74,29 @@ function App() {
     }
 
 
+    const getTodoStatusString = () => {
+        const numUncompletedTodos = todos.filter(
+            todo => !todo.complete
+        ).length;
+
+        if (!numUncompletedTodos) {
+            return 'all done!';
+        } else if (numUncompletedTodos === 1) {
+            return '1 todo left';
+        } else {
+            return numUncompletedTodos + ' todos left';
+        }
+    }
+
+
     return (
         <>
-            <TodoList todos={todos} toggleTodo={toggleTodo} />
+            <TodoList todos={todos} toggleTodo={toggleTodo}/>
             <input ref={todoNameRef} type="text"/>
             <button onClick={handleAddTodo}>Add Todo</button>
             <button>Clear completed</button>
             <button onClick={clearAllTodos}>Clear all todos</button>
-            <div>0 left Todos</div>
+            <div>{getTodoStatusString()}</div>
         </>
     )
 }
