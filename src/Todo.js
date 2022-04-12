@@ -18,6 +18,10 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
             const newTodoName = editInputRef.current.value;
 
             editTodo(todo.id, newTodoName);
+        } else {
+            setTimeout(() => {
+                editInputRef.current.focus();
+            }, 10);
         }
     }
 
@@ -39,7 +43,7 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
                 />
 
                 {editable ? <input ref={editInputRef} defaultValue={todo.name}
-                               onKeyDown={handleKeyDown}/> : todo.name}
+                                   onKeyDown={handleKeyDown}/> : todo.name}
             </label>
 
             <button onClick={handleEdit}>✎</button>
