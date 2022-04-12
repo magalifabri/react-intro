@@ -31,7 +31,7 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
                     onChange={handleChecking}
                 />
 
-                {edit ? <input ref={valueRef} /> : todo.name}
+                {edit ? <input ref={valueRef} defaultValue={todo.name} /> : todo.name}
             </label>
 
             <button onClick={handleEdit}>✎</button>
