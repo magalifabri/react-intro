@@ -9,6 +9,7 @@ const Notes = () => {
     const textareaRef = useRef();
     const [notes, setNotes] = useState([]);
     const [idCounter, setIdCounter] = useState(0);
+    const [noteBody, setNoteBody] = useState('');
 
 
     // get notes/idCounter from LS
@@ -54,21 +55,37 @@ const Notes = () => {
     }
 
 
+    const handleShowNote = (event) => {
+        const noteId = event.target.id
+        const note = notes.filter(note => note.id == noteId);
+        setNoteBody(note[0].body)
+    }
+
+
     return (
         <main>
             <h1>Notes</h1>
             <ul>
                 {notes.map(note => {
-                    return <li>{note.title}</li>
+                    return (
+                        <li key={note.id} id={note.id} onClick={handleShowNote}>
+                            {note.title}
+                        </li>
+                    )
                 })}
             </ul>
+
+            <div className="note-body">
+                {noteBody}
+            </div>
 
             <label htmlFor="title">title</label>
             <br/>
             <input ref={titleRef} id="title" type="text"/>
             <br/>
             <br/>
-            <textarea id="body" ref={textareaRef} cols="30" rows="10"></textarea>
+            <textarea id="body" ref={textareaRef} cols="30"
+                      rows="10"></textarea>
             <br/>
             <br/>
             <button onClick={handleAddNote}>+</button>
