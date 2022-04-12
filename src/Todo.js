@@ -29,6 +29,8 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
     const handleKeyDown = ({key}) => {
         if (key === 'Enter') {
             handleEdit();
+        } else if (key === 'Escape') {
+            setEditable(false);
         }
     }
 
