@@ -1,5 +1,8 @@
-import React, {useState} from 'react';
-import {useRef} from "react";
+import React, {useState, useRef, useEffect} from 'react';
+
+const LOCAL_STORAGE_NOTES_KEY = 'notes';
+const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
+
 
 const Notes = () => {
     const titleRef = useRef();
@@ -8,8 +11,26 @@ const Notes = () => {
     const [idCounter, setIdCounter] = useState(0);
 
 
-    // get notes from LS
-    // save notes to LS
+    // get notes/idCounter from LS
+    useEffect(() => {
+        const storedNotes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_NOTES_KEY));
+        const storedIdCounter = Number(localStorage.getItem(LOCAL_STORAGE_ID_COUNTER_KEY));
+
+        if (storedNotes && storedNotes.length > 0) {
+            setNotes(storedNotes);
+        }
+
+        if (storedIdCounter > 0) {
+            setIdCounter(storedIdCounter);
+        }
+    }, []);
+
+
+    // save notes/idCounter to LS
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_NOTES_KEY, JSON.stringify(notes));
+        localStorage.setItem(LOCAL_STORAGE_ID_COUNTER_KEY, String(idCounter));
+    }, [notes, idCounter]);
 
 
     const handleAddNote = () => {
@@ -25,6 +46,11 @@ const Notes = () => {
         });
 
         setIdCounter(prevState => prevState + 1);
+    }
+
+
+    const handleClearAll = () => {
+        localStorage.clear();
     }
 
 
@@ -46,6 +72,9 @@ const Notes = () => {
             <br/>
             <br/>
             <button onClick={handleAddNote}>+</button>
+            <br/>
+            <br/>
+            <button onClick={handleClearAll}>clear all</button>
         </main>
     );
 };
