@@ -22,6 +22,13 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
     }
 
 
+    const handleKeyDown = ({key}) => {
+        if (key === 'Enter') {
+            handleEdit();
+        }
+    }
+
+
     return (
         <div>
             <label>
@@ -31,7 +38,8 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
                     onChange={handleChecking}
                 />
 
-                {edit ? <input ref={valueRef} defaultValue={todo.name} /> : todo.name}
+                {edit ? <input ref={valueRef} defaultValue={todo.name}
+                               onKeyDown={handleKeyDown}/> : todo.name}
             </label>
 
             <button onClick={handleEdit}>✎</button>
