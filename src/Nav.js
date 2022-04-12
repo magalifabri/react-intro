@@ -1,12 +1,12 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const Nav = () => {
     return (
         <div className="nav">
             <ul>
-                <li>nav item 1</li>
-                <li>nav item 2</li>
-                <li>nav item 3</li>
+                <li><Link to="/">todo list</Link></li>
+                <li><Link to="/calendar">calendar</Link></li>
             </ul>
         </div>
     );
