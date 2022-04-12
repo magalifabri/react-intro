@@ -61,7 +61,7 @@ const Notes = () => {
 
     const handleShowNote = (event) => {
         const noteId = event.target.id
-        const note = notes.filter(note => note.id == noteId);
+        const note = notes.filter(note => note.id === Number(noteId));
         setNoteBody(note[0].body)
     }
 
