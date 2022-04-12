@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react';
 
 
 const Todo = ({todo, toggleTodo, editTodo}) => {
-    const valueRef = useRef();
+    const editInputRef = useRef();
     const [editable, setEditable] = useState(false);
 
 
@@ -15,7 +15,7 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
         setEditable(!editable);
 
         if (editable) {
-            const newTodoName = valueRef.current.value;
+            const newTodoName = editInputRef.current.value;
 
             editTodo(todo.id, newTodoName);
         }
@@ -38,7 +38,7 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
                     onChange={handleChecking}
                 />
 
-                {editable ? <input ref={valueRef} defaultValue={todo.name}
+                {editable ? <input ref={editInputRef} defaultValue={todo.name}
                                onKeyDown={handleKeyDown}/> : todo.name}
             </label>
 
