@@ -36,7 +36,7 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
 
 
     return (
-        <div>
+        <div className="todo">
             <label>
                 <input
                     type="checkbox"
