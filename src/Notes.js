@@ -35,14 +35,18 @@ const Notes = () => {
 
 
     const handleAddNote = () => {
-        const noteTitle = titleRef.current.value;
-        const noteBody = textareaRef.current.value;
+        let titleInput = titleRef.current.value;
+        const textareaInput = textareaRef.current.value;
+
+        if (!titleInput) {
+            titleInput = textareaInput.slice(0, 25) + '...';
+        }
 
         setNotes(prevState => {
             return [...prevState, {
                 id: idCounter,
-                title: noteTitle,
-                body: noteBody
+                title: titleInput,
+                body: textareaInput
             }];
         });
 
@@ -79,7 +83,7 @@ const Notes = () => {
                 {noteBody}
             </div>
 
-            <label htmlFor="title">title</label>
+            <label htmlFor="title">title (optional)</label>
             <br/>
             <input ref={titleRef} id="title" type="text"/>
             <br/>
