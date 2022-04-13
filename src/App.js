@@ -1,10 +1,10 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import TodoList from "./TodoList";
-import Nav from "./Nav";
-import Notes from "./Notes";
-import CalendarPage from "./CalendarPage";
+import TodoList from "./pages/TodoList";
+import Nav from "./components/Nav";
+import Notes from "./pages/Notes";
+import CalendarPage from "./pages/CalendarPage";
 import {useEffect, useState} from "react";
-import './style.css';
+import './styles/style.css';
 
 const LOCAL_STORAGE_TODOS_KEY = 'todos';
 const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';

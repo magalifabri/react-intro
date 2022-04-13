@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import Todo from "./Todo";
+import Todo from "../components/Todo";
 import DatePicker from 'react-date-picker'
 
 

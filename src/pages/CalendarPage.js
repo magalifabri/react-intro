@@ -2,7 +2,7 @@ import React from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {differenceInCalendarDays, parseISO} from 'date-fns';
-import './CalendarStyle.css';
+import '../styles/CalendarStyle.css';
 
 
 const CalendarPage = ({todos}) => {
