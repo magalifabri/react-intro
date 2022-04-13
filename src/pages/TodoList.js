@@ -50,6 +50,10 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
 
 
     const getTodoStatusString = () => {
+        if (!todos.length) {
+            return 'add a todo';
+        }
+
         const numUncompletedTodos = todos.filter(
             todo => !todo.complete
         ).length;
