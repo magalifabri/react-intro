@@ -92,6 +92,8 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
 
     return (
         <>
+            <h1>To-Do List</h1>
+
             <div className="todo-list">
                 {todos.map(todo => {
                     return <Todo
@@ -103,21 +105,21 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
                 })}
             </div>
             <input ref={todoNameRef} onKeyDown={handleKeyDown}
-                   type="text"/>
+                   type="text" className="input-style-1"/>
             <br/>
             <br/>
             <DatePicker onChange={setPickedDate} value={pickedDate} />
             <br/>
             <br/>
-            <button onClick={handleAddTodo}>+</button>
+            <button onClick={handleAddTodo} className="button-style-1">+</button>
             <br/>
             <br/>
-            <button onClick={handleClearCompletedTodos}>clear
+            <button onClick={handleClearCompletedTodos} className="button-style-1">clear
                 completed
             </button>
             <br/>
             <br/>
-            <button onClick={handleClearAllTodos}>clear all</button>
+            <button onClick={handleClearAllTodos} className="button-style-1">clear all</button>
             <br/>
             <br/>
             <div>{getTodoStatusString()}</div>

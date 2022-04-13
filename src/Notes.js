@@ -85,17 +85,17 @@ const Notes = () => {
 
             <label htmlFor="title">title (optional)</label>
             <br/>
-            <input ref={titleRef} id="title" type="text"/>
+            <input ref={titleRef} id="title" type="text" className="input-style-1"/>
             <br/>
             <br/>
             <textarea id="body" ref={textareaRef} cols="30"
-                      rows="10"></textarea>
+                      rows="10" className="input-style-1"></textarea>
             <br/>
             <br/>
-            <button onClick={handleAddNote}>+</button>
+            <button onClick={handleAddNote} className="button-style-1">+</button>
             <br/>
             <br/>
-            <button onClick={handleClearAll}>clear all</button>
+            <button onClick={handleClearAll} className="button-style-1">clear all</button>
         </main>
     );
 };

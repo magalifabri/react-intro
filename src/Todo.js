@@ -44,11 +44,11 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
                     onChange={handleChecking}
                 />
 
-                {editable ? <input ref={editInputRef} defaultValue={todo.name}
+                {editable ? <input type="text" ref={editInputRef} defaultValue={todo.name}
                                    onKeyDown={handleKeyDown}/> : todo.name}
             </label>
 
-            <button onClick={handleEdit}>✎</button>
+            <button onClick={handleEdit} className="button-style-1">✎</button>
         </div>
     );
 }

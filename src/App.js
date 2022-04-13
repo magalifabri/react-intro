@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import Notes from "./Notes";
 import CalendarPage from "./CalendarPage";
 import {useEffect, useState} from "react";
+import './style.css';
 
 const LOCAL_STORAGE_TODOS_KEY = 'todos';
 const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
@@ -33,7 +34,7 @@ const App = () => {
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_TODOS_KEY, JSON.stringify(todos))
         localStorage.setItem(LOCAL_STORAGE_ID_COUNTER_KEY, String(idCounter));
-        console.log(todos)
+        // console.log(todos)
     }, [todos, idCounter]);
 
 
