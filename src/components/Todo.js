@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 
 
-const Todo = ({todo, toggleTodo, editTodo}) => {
+const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
     const editInputRef = useRef();
     const [editable, setEditable] = useState(false);
 
@@ -35,8 +35,13 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
     }
 
 
+    const handleAnimationEnd =() => {
+        setNewToFalse(todo.id);
+    }
+
+
     return (
-        <div className="todo">
+        <div className={todo.new ? "todo new" : "todo"} onAnimationEnd={handleAnimationEnd}>
             <label>
                 <input
                     type="checkbox"

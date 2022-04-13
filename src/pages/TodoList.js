@@ -22,6 +22,7 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
                 name: newTodoName,
                 complete: false,
                 date: pickedDate ?? false,
+                new: true,
             }];
         });
 
@@ -95,6 +96,17 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
     }
 
 
+    const setNewToFalse = (todoId) => {
+        const newTodos = [...todos];
+        const todoToChange = newTodos.find(
+            todo => todo.id === todoId
+        );
+
+        todoToChange.new = false;
+        setTodos(newTodos);
+    }
+
+
     return (
         <>
             <h1>To-Do List</h1>
@@ -109,6 +121,7 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
                             todo={todo}
                             toggleTodo={toggleTodo}
                             editTodo={editTodo}
+                            setNewToFalse={setNewToFalse}
                         />
                     })}
                 </div>
