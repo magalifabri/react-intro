@@ -21,7 +21,7 @@ body {
 }
 
 h1 {
-    margin: 1rem 0;
+    margin: 2rem 0;
 }
 
 p {
@@ -33,7 +33,8 @@ ul {
     padding-left: 0;
 }
 
-.input-style-1 {
+.input-style-1,
+.react-date-picker__wrapper {
     padding: .5rem;
     margin: .5rem 0;
 

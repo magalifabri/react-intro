@@ -48,7 +48,7 @@ const Todo = ({todo, toggleTodo, editTodo}) => {
                                    onKeyDown={handleKeyDown}/> : todo.name}
             </label>
 
-            <button onClick={handleEdit} className="button-style-1">✎</button>
+            <button onClick={handleEdit} className="button-style-2">✎</button>
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import Todo from "../components/Todo";
 import DatePicker from 'react-date-picker'
+import '../styles/TodoListStyle.css';
 
 
 const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
@@ -94,35 +95,37 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
         <>
             <h1>To-Do List</h1>
 
-            <div className="todo-list">
-                {todos.map(todo => {
-                    return <Todo
-                        key={todo.id}
-                        todo={todo}
-                        toggleTodo={toggleTodo}
-                        editTodo={editTodo}
-                    />
-                })}
+            <div className="container">
+                <div className="todos-left">{getTodoStatusString()}</div>
+
+                <div className="todo-list">
+                    {todos.map(todo => {
+                        return <Todo
+                            key={todo.id}
+                            todo={todo}
+                            toggleTodo={toggleTodo}
+                            editTodo={editTodo}
+                        />
+                    })}
+                </div>
+
+                <input ref={todoNameRef} onKeyDown={handleKeyDown}
+                       type="text" className="input-style-1"/>
+
+                <DatePicker onChange={setPickedDate} value={pickedDate}/>
+
+                <button onClick={handleAddTodo} className="button-style-1">+
+                </button>
+
+                <button onClick={handleClearCompletedTodos}
+                        className="button-style-1">clear
+                    completed
+                </button>
+
+                <button onClick={handleClearAllTodos}
+                        className="button-style-1">clear all
+                </button>
             </div>
-            <input ref={todoNameRef} onKeyDown={handleKeyDown}
-                   type="text" className="input-style-1"/>
-            <br/>
-            <br/>
-            <DatePicker onChange={setPickedDate} value={pickedDate} />
-            <br/>
-            <br/>
-            <button onClick={handleAddTodo} className="button-style-1">+</button>
-            <br/>
-            <br/>
-            <button onClick={handleClearCompletedTodos} className="button-style-1">clear
-                completed
-            </button>
-            <br/>
-            <br/>
-            <button onClick={handleClearAllTodos} className="button-style-1">clear all</button>
-            <br/>
-            <br/>
-            <div>{getTodoStatusString()}</div>
         </>
     );
 }
