@@ -1,0 +1,25 @@
+nav {
+    /*border: 1px solid gray;*/
+    margin-bottom: 2rem;
+}
+
+nav ul {
+    margin: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 1rem;
+}
+
+nav a {
+    border-bottom: 1px solid gray;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: .7rem;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 1px;
+}

@@ -1,15 +1,16 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import '../styles/NavStyle.css'
 
 const Nav = () => {
     return (
-        <div className="nav">
+        <nav>
             <ul>
-                <li><Link to="/">todo list</Link></li>
+                <li><Link to="/">to-do list</Link></li>
                 <li><Link to="/calendar">calendar</Link></li>
                 <li><Link to="/notes">notes</Link></li>
             </ul>
-        </div>
+        </nav>
     );
 };
 
