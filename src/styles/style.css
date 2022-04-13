@@ -12,9 +12,11 @@ font-family: 'Nunito', sans-serif;
 }
 
 body {
-    padding: 2rem;
+    padding: 1rem 2rem 2rem;
     min-width: 300px;
     max-width: 500px;
+    margin: 0 auto;
+
     font-family: 'Nunito', sans-serif;
 }
 
