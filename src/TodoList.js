@@ -1,48 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import Todo from "./Todo";
-
-const LOCAL_STORAGE_TODOS_KEY = 'todos';
-const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
+import DatePicker from 'react-date-picker'
 
 
-const TodoList = () => {
-
+const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
     const todoNameRef = useRef();
-    const [todos, setTodos] = useState([]);
-    const [idCounter, setIdCounter] = useState(0);
-
-
-    // load states from local storage
-    useEffect(() => {
-        const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODOS_KEY));
-        const storedIdCounter = Number(localStorage.getItem(LOCAL_STORAGE_ID_COUNTER_KEY));
-
-        if (storedTodos && storedTodos.length > 0) {
-            setTodos(storedTodos);
-        }
-
-        if (storedIdCounter) {
-            setIdCounter(storedIdCounter);
-        }
-    }, []);
-
-
-    // save states in local storage
-    useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_TODOS_KEY, JSON.stringify(todos))
-        localStorage.setItem(LOCAL_STORAGE_ID_COUNTER_KEY, String(idCounter));
-    }, [todos, idCounter]);
-
-
-    const getTodosWithNewTodoAdded = (newTodoName, prevTodos) => {
-        setIdCounter(idCounter + 1);
-
-        return [...prevTodos, {
-            id: idCounter,
-            name: newTodoName,
-            complete: false,
-        }];
-    }
+    const [pickedDate, setPickedDate] = useState();
 
 
     const handleAddTodo = () => {
@@ -52,10 +15,20 @@ const TodoList = () => {
             return;
         }
 
-        setTodos(prevTodos => getTodosWithNewTodoAdded(newTodoName, prevTodos));
+        setTodos(prevTodos => {
+            return [...prevTodos, {
+                id: idCounter,
+                name: newTodoName,
+                complete: false,
+                date: pickedDate ?? false,
+            }];
+        });
 
-        // empty input field
+        setIdCounter(idCounter + 1);
+
+        // empty input fields
         todoNameRef.current.value = '';
+        setPickedDate();
     }
 
 
@@ -131,11 +104,22 @@ const TodoList = () => {
             </div>
             <input ref={todoNameRef} onKeyDown={handleKeyDown}
                    type="text"/>
+            <br/>
+            <br/>
+            <DatePicker onChange={setPickedDate} value={pickedDate} />
+            <br/>
+            <br/>
             <button onClick={handleAddTodo}>+</button>
+            <br/>
+            <br/>
             <button onClick={handleClearCompletedTodos}>clear
                 completed
             </button>
+            <br/>
+            <br/>
             <button onClick={handleClearAllTodos}>clear all</button>
+            <br/>
+            <br/>
             <div>{getTodoStatusString()}</div>
         </>
     );
