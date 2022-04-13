@@ -126,10 +126,16 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
                     })}
                 </div>
 
-                <input ref={todoNameRef} onKeyDown={handleKeyDown}
-                       type="text" className="input-style-1"/>
+                <div className="input-wrapper todo-input">
+                    <label htmlFor="todo">to-do</label>
+                    <input id="todo" ref={todoNameRef} onKeyDown={handleKeyDown}
+                           type="text" className="input-style-1"/>
+                </div>
 
-                <DatePicker onChange={setPickedDate} value={pickedDate}/>
+                <div className="input-wrapper datepicker-input">
+                    <label>put to-do on calendar (optional)</label>
+                    <DatePicker onChange={setPickedDate} value={pickedDate}/>
+                </div>
 
                 <button onClick={handleAddTodo} className="button-style-1">+
                 </button>

@@ -52,3 +52,14 @@
     font-family: 'Nunito', sans-serif;
     font-size: 1rem;
 }
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-wrapper label {
+    font-size: .8rem;
+    /*font-weight: bold;*/
+    color: gray;
+}
