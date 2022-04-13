@@ -1,0 +1,36 @@
+.has-todo {
+    background-color: #22854b;
+    color: white;
+}
+.has-todo:hover {
+    background-color: #3cb26d !important;
+}
+
+.todo-popup {
+    z-index: 1;
+    opacity: 0;
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+
+    background-color: #22854b;
+    text-align: left;
+
+    transition: opacity .5s ease, top 0s ease .5s;
+}
+.has-todo:hover > .todo-popup {
+    top: 0;
+    opacity: 1;
+    transition: opacity .5s ease, top 0s ease;
+}
+
+.todo-popup ul,
+.todo-popup li {
+    padding: 0;
+    margin: 0;
+}
+.todo-popup ul {
+    padding: 1rem 1rem 1rem 2rem;
+}
