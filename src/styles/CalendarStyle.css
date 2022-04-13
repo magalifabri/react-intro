@@ -6,6 +6,15 @@
     background-color: #3cb26d !important;
 }
 
+.has-todo.react-calendar__tile--now {
+    background-color: #96b730;
+    color: white;
+}
+.has-todo.react-calendar__tile--now:hover {
+    background-color: #aad03b !important;
+    color: white;
+}
+
 .todo-popup {
     z-index: 1;
     opacity: 0;
