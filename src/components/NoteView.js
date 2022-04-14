@@ -5,20 +5,22 @@ const NoteView = ({note, setMode, handleDeleteNote}) => {
         <>
             {note.body}
 
-            <button className="button-style-1"
-                    onClick={() => setMode('add')}>
-                close
-            </button>
+            <div className="button-row">
+                <button className="button-style-1"
+                        onClick={() => setMode('add')}>
+                    close
+                </button>
 
-            <button className="button-style-1"
-                    onClick={() => setMode('edit')}>
-                edit
-            </button>
+                <button className="button-style-1"
+                        onClick={() => setMode('edit')}>
+                    edit
+                </button>
 
-            <button className="button-style-1"
-                    onClick={() => handleDeleteNote(note.id)}>
-                delete
-            </button>
+                <button className="button-style-1"
+                        onClick={() => handleDeleteNote(note.id)}>
+                    delete
+                </button>
+            </div>
         </>
     );
 };

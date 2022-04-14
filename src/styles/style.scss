@@ -83,6 +83,17 @@ label + button {
     letter-spacing: 1px;
 }
 
+.button-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: right;
+
+    & > * {
+        flex: 1;
+    }
+}
+
 .input-wrapper {
     display: flex;
     flex-direction: column;
