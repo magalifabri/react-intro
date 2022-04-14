@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NoteView = ({note, setMode}) => {
+const NoteView = ({note, setMode, handleDeleteNote}) => {
     return (
         <>
             {note.body}
@@ -13,6 +13,11 @@ const NoteView = ({note, setMode}) => {
             <button className="button-style-1"
                     onClick={() => setMode('edit')}>
                 edit
+            </button>
+
+            <button className="button-style-1"
+                    onClick={() => handleDeleteNote(note.id)}>
+                delete
             </button>
         </>
     );

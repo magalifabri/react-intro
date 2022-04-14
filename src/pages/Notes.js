@@ -62,6 +62,13 @@ const Notes = () => {
     }
 
 
+    const handleDeleteNote = (noteId) => {
+        const newNotes = notes.filter(note => note.id !== noteId);
+
+        setNotes(newNotes);
+    }
+
+
     const handleClearAll = () => {
         localStorage.clear();
     }
@@ -101,7 +108,8 @@ const Notes = () => {
 
             case 'view':
                 return <NoteView note={selectedNote}
-                                 setMode={setMode}/>
+                                 setMode={setMode}
+                                 handleDeleteNote={handleDeleteNote}/>
 
             case 'add':
                 return <NoteAdd titleRef={titleRef}
