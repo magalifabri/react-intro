@@ -1,15 +1,14 @@
 import React, {useState, useRef, useEffect} from 'react';
-import '../styles/NotesStyle.scss';
 import NoteEdit from "../components/NoteEdit";
 import NoteView from "../components/NoteView";
 import NoteAdd from "../components/NoteAdd";
+import '../styles/NotesStyle.scss';
 
 const LOCAL_STORAGE_NOTES_KEY = 'notes';
 const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
 
 
 const Notes = () => {
-    const titleRef = useRef();
     const textareaRef = useRef();
     const editTextareaRef = useRef();
     const [notes, setNotes] = useState([]);
@@ -41,12 +40,8 @@ const Notes = () => {
 
 
     const handleAddNote = () => {
-        let titleInput = titleRef.current.value;
         const textareaInput = textareaRef.current.value;
-
-        if (!titleInput) {
-            titleInput = textareaInput.slice(0, 25) + '...';
-        }
+        const titleInput = textareaInput.slice(0, 25) + '...';
 
         setNotes(prevState => {
             return [...prevState, {
@@ -58,7 +53,6 @@ const Notes = () => {
 
         setIdCounter(prevState => prevState + 1);
 
-        titleRef.current.value = '';
         textareaRef.current.value = '';
     }
 
@@ -133,8 +127,7 @@ const Notes = () => {
                                  handleDeleteNote={handleDeleteNote}/>
 
             case 'add':
-                return <NoteAdd titleRef={titleRef}
-                                textareaRef={textareaRef}
+                return <NoteAdd textareaRef={textareaRef}
                                 handleAddNote={handleAddNote}/>
         }
     }
