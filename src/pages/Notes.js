@@ -41,6 +41,9 @@ const Notes = () => {
 
     const handleAddNote = () => {
         const textareaInput = textareaRef.current.value;
+        if (!textareaInput) {
+            return;
+        }
         const titleInput = textareaInput.slice(0, 25) + '...';
 
         setNotes(prevState => {
