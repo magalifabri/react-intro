@@ -1,9 +1,35 @@
 import React from 'react';
 
-const NoteEdit = ({note, setMode}) => {
+const NoteEdit = ({
+                      note,
+                      setMode,
+                      handleEditNote,
+                      editTextareaRef,
+                      handleDeleteNote
+                  }) => {
     return (
         <>
-            note edit (WIP)
+            <textarea className="input-wrapper__input"
+                      defaultValue={note.body}
+                      ref={editTextareaRef}
+                      cols="30" rows="10"/>
+
+            <div className="button-row">
+                <button className="button-style-1"
+                        onClick={() => setMode('add')}>
+                    back
+                </button>
+
+                <button className="button-style-1"
+                        onClick={() => handleEditNote(note.id)}>
+                    submit
+                </button>
+
+                <button className="button-style-1"
+                        onClick={() => handleDeleteNote(note.id)}>
+                    delete
+                </button>
+            </div>
         </>
     );
 };

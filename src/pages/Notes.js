@@ -11,6 +11,7 @@ const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
 const Notes = () => {
     const titleRef = useRef();
     const textareaRef = useRef();
+    const editTextareaRef = useRef();
     const [notes, setNotes] = useState([]);
     const [idCounter, setIdCounter] = useState(0);
     const [mode, setMode] = useState('add');
@@ -69,6 +70,23 @@ const Notes = () => {
     }
 
 
+    const handleEditNote = (noteId) => {
+        const newNotes = [...notes];
+
+        newNotes.map(note => {
+            if (note.id === noteId) {
+                const editTextareaInput = editTextareaRef.current.value;
+
+                note.title = editTextareaInput.slice(0, 25) + '...';
+                note.body = editTextareaInput;
+            }
+        });
+
+        setNotes(newNotes);
+        setMode('view');
+    }
+
+
     const handleClearAll = () => {
         localStorage.clear();
     }
@@ -104,7 +122,10 @@ const Notes = () => {
         switch (mode) {
             case 'edit':
                 return <NoteEdit note={selectedNote}
-                                 setMode={setMode}/>
+                                 setMode={setMode}
+                                 handleEditNote={handleEditNote}
+                                 editTextareaRef={editTextareaRef}
+                                 handleDeleteNote={handleDeleteNote}/>
 
             case 'view':
                 return <NoteView note={selectedNote}
