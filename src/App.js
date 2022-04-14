@@ -6,7 +6,7 @@ import CalendarPage from "./pages/CalendarPage";
 import {useEffect, useState} from "react";
 import './styles/style.scss';
 
-const LOCAL_STORAGE_TODOS_KEY = 'todos';
+export const LOCAL_STORAGE_TODOS_KEY = 'todos';
 
 
 const App = () => {

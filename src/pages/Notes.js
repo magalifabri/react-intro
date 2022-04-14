@@ -85,7 +85,7 @@ const Notes = () => {
 
 
     const handleClearAll = () => {
-        localStorage.clear();
+        localStorage.removeItem(LOCAL_STORAGE_NOTES_KEY);
         setNotes([]);
         setMode('view');
     }

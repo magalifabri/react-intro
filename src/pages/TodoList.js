@@ -4,6 +4,8 @@ import {v4 as uuidv4} from 'uuid';
 import Todo from "../components/Todo";
 import '../styles/TodoListStyle.scss';
 
+import {LOCAL_STORAGE_TODOS_KEY} from "../App";
+
 
 const TodoList = ({todos, setTodos}) => {
     const todoNameRef = useRef();
@@ -34,7 +36,8 @@ const TodoList = ({todos, setTodos}) => {
 
 
     const handleClearAllTodos = () => {
-        localStorage.clear();
+        localStorage.removeItem(LOCAL_STORAGE_TODOS_KEY);
+        setTodos([]);
     }
 
 
