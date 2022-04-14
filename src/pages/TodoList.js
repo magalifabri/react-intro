@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import Todo from "../components/Todo";
 import DatePicker from 'react-date-picker'
-import '../styles/TodoListStyle.css';
+import '../styles/TodoListStyle.scss';
 
 
 const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
@@ -109,12 +109,14 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
 
     return (
         <>
-            <h1>To-Do List</h1>
+            <h1 className="page-title">To-Do List</h1>
 
-            <div className="container">
-                <div className="todos-left">{getTodoStatusString()}</div>
+            <div className="flex-wrapper todo-app">
+                <div className="todo-app__todos-left">
+                    {getTodoStatusString()}
+                </div>
 
-                <div className="todo-list">
+                <div className="todo-app__todo-list">
                     {todos.map(todo => {
                         return <Todo
                             key={todo.id}
@@ -126,27 +128,34 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
                     })}
                 </div>
 
-                <div className="input-wrapper todo-input">
-                    <label htmlFor="todo">to-do</label>
-                    <input id="todo" ref={todoNameRef} onKeyDown={handleKeyDown}
-                           type="text" className="input-style-1"/>
+                <div className="input-wrapper">
+                    <label className="input-wrapper__label"
+                           htmlFor="todo">to-do</label>
+                    <input className="input-wrapper__input" id="todo"
+                           ref={todoNameRef} onKeyDown={handleKeyDown}
+                           type="text"/>
                 </div>
 
-                <div className="input-wrapper datepicker-input">
-                    <label>put to-do on calendar (optional)</label>
+                <div className="input-wrapper">
+                    <label className="input-wrapper__label">
+                        put to-do on calendar (optional)
+                    </label>
                     <DatePicker onChange={setPickedDate} value={pickedDate}/>
                 </div>
 
-                <button onClick={handleAddTodo} className="button-style-1">+
+                <button className="button-style-1"
+                        onClick={handleAddTodo}>
+                    +
                 </button>
 
-                <button onClick={handleClearCompletedTodos}
-                        className="button-style-1">clear
-                    completed
+                <button className="button-style-1"
+                        onClick={handleClearCompletedTodos}>
+                    clear completed
                 </button>
 
-                <button onClick={handleClearAllTodos}
-                        className="button-style-1">clear all
+                <button className="button-style-1"
+                        onClick={handleClearAllTodos}>
+                    clear all
                 </button>
             </div>
         </>

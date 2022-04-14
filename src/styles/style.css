@@ -33,18 +33,6 @@ ul {
     padding-left: 0;
 }
 
-.input-style-1,
-.react-date-picker__wrapper {
-    padding: .5rem;
-    margin: .5rem 0;
-
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #bebebe;
-    border-radius: 3px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
-}
-
 input[type="checkbox"] {
     margin-right: .5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -64,4 +52,31 @@ label + button {
     font-size: .7rem;
     font-family: 'Nunito', sans-serif;
     letter-spacing: 1px;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.input-wrapper__label {
+     font-size: .8rem;
+     /*font-weight: bold;*/
+     color: gray;
+ }
+.input-wrapper__input,
+.react-date-picker__wrapper {
+    padding: .5rem;
+    margin: .5rem 0;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #bebebe;
+    border-radius: 3px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }

@@ -1,4 +1,5 @@
 import React, {useState, useRef} from 'react';
+import '../styles/TodoStyle.scss';
 
 
 const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
@@ -35,25 +36,37 @@ const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
     }
 
 
-    const handleAnimationEnd =() => {
+    const handleAnimationEnd = () => {
         setNewToFalse(todo.id);
     }
 
 
     return (
-        <div className={todo.new ? "todo new" : "todo"} onAnimationEnd={handleAnimationEnd}>
-            <label>
-                <input
-                    type="checkbox"
-                    defaultChecked={todo.complete}
-                    onChange={handleChecking}
+        <div className={todo.new ? "todo todo--new" : "todo"}
+             onAnimationEnd={handleAnimationEnd}>
+
+            <label className="todo__label">
+                <input className="todo__checkbox"
+                       type="checkbox"
+                       defaultChecked={todo.complete}
+                       onChange={handleChecking}
                 />
 
-                {editable ? <input type="text" ref={editInputRef} defaultValue={todo.name}
-                                   onKeyDown={handleKeyDown}/> : todo.name}
+                {
+                    editable ?
+                        <input className="todo__input"
+                               type="text"
+                               ref={editInputRef}
+                               defaultValue={todo.name}
+                               onKeyDown={handleKeyDown}/> :
+                        todo.name
+                }
             </label>
 
-            <button onClick={handleEdit} className="button-style-2">✎</button>
+            <button className="todo__edit-button"
+                    onClick={handleEdit}>
+                ✎
+            </button>
         </div>
     );
 }
