@@ -52,6 +52,9 @@ const Notes = () => {
         });
 
         setIdCounter(prevState => prevState + 1);
+
+        titleRef.current.value = '';
+        textareaRef.current.value = '';
     }
 
 
