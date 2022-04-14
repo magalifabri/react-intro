@@ -8,7 +8,7 @@ const NoteView = ({note, setMode, handleDeleteNote}) => {
             <div className="button-row">
                 <button className="button-style-1"
                         onClick={() => setMode('add')}>
-                    close
+                    add
                 </button>
 
                 <button className="button-style-1"
