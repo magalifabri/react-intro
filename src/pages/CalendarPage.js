@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import {differenceInCalendarDays, parseISO} from 'date-fns';
-import '../styles/CalendarStyle.css';
+import CalendarTodos from "../components/CalendarTodos";
+import '../styles/CalendarStyle.scss';
 
 
 const CalendarPage = ({todos}) => {
+    const [selectedDate, setSelectedDate] = useState(new Date())
+
+
     const isSameDay = (calendarDate, todoDate) => {
         if (typeof todoDate === 'string') {
             return differenceInCalendarDays(parseISO(todoDate), calendarDate) === 0;
@@ -15,27 +19,8 @@ const CalendarPage = ({todos}) => {
     }
 
 
-    // add pop-up div to days with associated todos for styling (month-view only)
-    function tileContent(e) {
-        const date = e.date;
-        const view = e.view;
-
-        if (view === 'month') {
-            const todosOnThisDay = todos.filter(todo => isSameDay(date, todo.date));
-
-            if (todosOnThisDay.length) {
-                let i = 0;
-
-                return (
-                    <div className="todo-popup">
-                        <ul>
-                            {todosOnThisDay.map(todo => <li
-                                key={i++}>{todo.name}</li>)}
-                        </ul>
-                    </div>
-                )
-            }
-        }
+    const selectDay = (value) => {
+        setSelectedDate(value);
     }
 
 
@@ -50,14 +35,18 @@ const CalendarPage = ({todos}) => {
 
 
     return (
-        <div>
+        <>
             <h1>Calendar</h1>
 
             <Calendar
-                tileContent={tileContent}
                 tileClassName={tileClassName}
+                onClickDay={selectDay}
             />
-        </div>
+
+            <CalendarTodos selectedDate={selectedDate}
+                           todos={todos}
+                           isSameDay={isSameDay}/>
+        </>
     );
 };
 

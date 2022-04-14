@@ -5,8 +5,6 @@
     &__item {
         text-decoration: underline solid style.$accent 3px;
         cursor: pointer;
-        margin-bottom: .5rem;
-
         transition: all .3s ease;
 
         &--selected {
