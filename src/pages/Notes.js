@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 import NoteEdit from "../components/NoteEdit";
 import NoteView from "../components/NoteView";
 import NoteAdd from "../components/NoteAdd";
@@ -51,7 +51,8 @@ const Notes = () => {
             return [...prevState, {
                 id: uuidv4(),
                 title: titleInput,
-                body: textareaInput
+                body: textareaInput,
+                new: true,
             }];
         });
 
@@ -100,12 +101,31 @@ const Notes = () => {
     }
 
 
-    const getClassName = (noteId) => {
-        if (noteId === selectedNote.id) {
-            return "notes__item notes__item--selected"
-        } else {
-            return "notes__item";
+    const getClassName = (note) => {
+        let className = "notes__item";
+
+        if (note.id === selectedNote.id) {
+            className += " notes__item--selected";
         }
+
+        if (note.new) {
+            className += " notes__item--new";
+        }
+
+        return className;
+    }
+
+
+    const setNewToFalse = (event) => {
+        const noteId = event.target.id
+
+        const newNotes = [...notes];
+        const noteToChange = newNotes.find(
+            note => note.id === noteId
+        );
+
+        noteToChange.new = false;
+        setNotes(newNotes);
     }
 
 
@@ -117,9 +137,11 @@ const Notes = () => {
                 <ul className="notes__list">
                     {notes.map(note => {
                         return (
-                            <li className={getClassName(note.id)}
+                            <li className={getClassName(note)}
                                 key={note.id} id={note.id}
-                                onClick={handleShowNote}>
+                                onClick={handleShowNote}
+                                onAnimationEnd={setNewToFalse}
+                            >
                                 {note.title}
                             </li>
                         )

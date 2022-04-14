@@ -3,7 +3,7 @@
 .notes {
 
     &__item {
-        text-decoration: underline solid #bbe7f1 3px;
+        text-decoration: underline solid style.$accent 3px;
         cursor: pointer;
         margin-bottom: .5rem;
 
@@ -12,6 +12,10 @@
         &--selected {
             font-weight: 700;
             text-decoration-color: #67cde5;
+        }
+
+        &--new {
+            @include style.new-element-slide-in-animation;
         }
     }
 
