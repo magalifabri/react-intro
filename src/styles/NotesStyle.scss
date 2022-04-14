@@ -2,6 +2,19 @@
 
 .notes {
 
+    &__item {
+        text-decoration: underline solid #bbe7f1 3px;
+        cursor: pointer;
+        margin-bottom: .5rem;
+
+        transition: all .3s ease;
+
+        &--selected {
+            font-weight: 700;
+            text-decoration-color: #67cde5;
+        }
+    }
+
     &__textarea {
         @include style.input-style-1;
     }

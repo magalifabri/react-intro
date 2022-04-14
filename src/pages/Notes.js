@@ -39,6 +39,14 @@ const Notes = () => {
     }, [notes, idCounter]);
 
 
+    // remove selected note styling when going back to NoteAdd
+    useEffect(() => {
+        if (mode === 'add') {
+            setSelectedNote({});
+        }
+    }, [mode])
+
+
     const handleAddNote = () => {
         const textareaInput = textareaRef.current.value;
         if (!textareaInput) {
@@ -102,6 +110,15 @@ const Notes = () => {
     }
 
 
+    const getClassName = (noteId) => {
+        if (noteId === selectedNote.id) {
+            return "notes__item notes__item--selected"
+        } else {
+            return "notes__item";
+        }
+    }
+
+
     const getNotes = () => {
         if (!notes.length) {
             return 'No notes yet';
@@ -110,7 +127,7 @@ const Notes = () => {
                 <ul className="notes__list">
                     {notes.map(note => {
                         return (
-                            <li className="notes__item"
+                            <li className={getClassName(note.id)}
                                 key={note.id} id={note.id}
                                 onClick={handleShowNote}>
                                 {note.title}
