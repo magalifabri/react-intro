@@ -1,3 +1,5 @@
+@use 'style';
+
 .todo-app {
 
     &__todos-left {
@@ -6,4 +8,8 @@
         letter-spacing: 1px;
         font-size: .7rem;
     }
+}
+
+.react-date-picker__wrapper {
+    @include style.input-style-1;
 }
