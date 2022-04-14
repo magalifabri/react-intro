@@ -145,17 +145,19 @@ const TodoList = ({todos, setTodos}) => {
                     <DatePicker onChange={setPickedDate} value={pickedDate}/>
                 </div>
 
-                <button className="button-style-1"
-                        onClick={handleAddTodo}>
-                    +
-                </button>
+                <div className="button-row">
+                    <button className="button-style-1 button-style-1--big-font"
+                            onClick={handleAddTodo}>
+                        +
+                    </button>
 
-                <button className="button-style-1"
-                        onClick={handleClearCompletedTodos}>
-                    clear completed
-                </button>
+                    <button className="button-style-1"
+                            onClick={handleClearCompletedTodos}>
+                        clear completed
+                    </button>
+                </div>
 
-                <button className="button-style-1"
+                <button className="button-style-1 button-style-1--danger"
                         onClick={handleClearAllTodos}>
                     clear all
                 </button>

@@ -6,7 +6,7 @@ const NoteView = ({textareaRef, handleAddNote}) => {
             <textarea className="notes__textarea" id="body"
                       ref={textareaRef} cols="30" rows="10"/>
 
-            <button className="button-style-1" onClick={handleAddNote} >
+            <button className="button-style-1 button-style-1--big-font" onClick={handleAddNote} >
                 +
             </button>
         </>
