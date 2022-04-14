@@ -4,7 +4,7 @@ import Nav from "./components/Nav";
 import Notes from "./pages/Notes";
 import CalendarPage from "./pages/CalendarPage";
 import {useEffect, useState} from "react";
-import './styles/style.css';
+import './styles/style.scss';
 
 const LOCAL_STORAGE_TODOS_KEY = 'todos';
 const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
