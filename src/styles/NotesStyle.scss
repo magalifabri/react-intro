@@ -1,0 +1,8 @@
+@use 'style';
+
+.notes {
+
+    &__textarea {
+        @include style.input-style-1;
+    }
+}

@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
+import '../styles/NotesStyle.scss';
 
 const LOCAL_STORAGE_NOTES_KEY = 'notes';
 const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
@@ -66,36 +67,56 @@ const Notes = () => {
     }
 
 
+    const getNotes = () => {
+        if (!notes.length) {
+            return 'add a note';
+        } else {
+            return notes.map(note => {
+                return (
+                    <li className="notes__item"
+                        key={note.id} id={note.id}
+                        onClick={handleShowNote}>
+                        {note.title}
+                    </li>
+                )
+            })
+        }
+    }
+
+
     return (
         <main>
-            <h1>Notes</h1>
-            <ul>
-                {notes.map(note => {
-                    return (
-                        <li key={note.id} id={note.id} onClick={handleShowNote}>
-                            {note.title}
-                        </li>
-                    )
-                })}
-            </ul>
+            <h1 className="page-title">Notes</h1>
 
-            <div className="note-body">
-                {noteBody}
+            <div className="flex-wrapper notes">
+                <ul className="notes__list">
+                    {getNotes()}
+                </ul>
+
+                <div className="notes__note-body">
+                    {noteBody}
+                </div>
+
+                <div className="input-wrapper">
+                    <label className="input-wrapper__label"
+                           htmlFor="title">
+                        title (optional)
+                    </label>
+                    <input className="input-wrapper__input" id="title"
+                           ref={titleRef} type="text"/>
+                </div>
+
+                <textarea className="notes__textarea" id="body"
+                          ref={textareaRef} cols="30" rows="10"/>
+
+                <button className="button-style-1" onClick={handleAddNote} >
+                    +
+                </button>
+
+                <button className="button-style-1" onClick={handleClearAll} >
+                    clear all
+                </button>
             </div>
-
-            <label htmlFor="title">title (optional)</label>
-            <br/>
-            <input ref={titleRef} id="title" type="text" className="input-style-1"/>
-            <br/>
-            <br/>
-            <textarea id="body" ref={textareaRef} cols="30"
-                      rows="10" className="input-style-1"></textarea>
-            <br/>
-            <br/>
-            <button onClick={handleAddNote} className="button-style-1">+</button>
-            <br/>
-            <br/>
-            <button onClick={handleClearAll} className="button-style-1">clear all</button>
         </main>
     );
 };
