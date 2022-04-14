@@ -1,10 +1,11 @@
 import React, {useRef, useState} from 'react';
-import Todo from "../components/Todo";
 import DatePicker from 'react-date-picker'
+import {v4 as uuidv4} from 'uuid';
+import Todo from "../components/Todo";
 import '../styles/TodoListStyle.scss';
 
 
-const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
+const TodoList = ({todos, setTodos}) => {
     const todoNameRef = useRef();
     const [pickedDate, setPickedDate] = useState();
 
@@ -18,15 +19,13 @@ const TodoList = ({todos, setTodos, idCounter, setIdCounter}) => {
 
         setTodos(prevTodos => {
             return [...prevTodos, {
-                id: idCounter,
+                id: uuidv4(),
                 name: newTodoName,
                 complete: false,
                 date: pickedDate ?? false,
                 new: true,
             }];
         });
-
-        setIdCounter(idCounter + 1);
 
         // empty input fields
         todoNameRef.current.value = '';

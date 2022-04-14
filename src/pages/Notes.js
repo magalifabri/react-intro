@@ -1,42 +1,35 @@
 import React, {useState, useRef, useEffect} from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import NoteEdit from "../components/NoteEdit";
 import NoteView from "../components/NoteView";
 import NoteAdd from "../components/NoteAdd";
 import '../styles/NotesStyle.scss';
 
 const LOCAL_STORAGE_NOTES_KEY = 'notes';
-const LOCAL_STORAGE_ID_COUNTER_KEY = 'idCounter';
 
 
 const Notes = () => {
     const textareaRef = useRef();
     const editTextareaRef = useRef();
     const [notes, setNotes] = useState([]);
-    const [idCounter, setIdCounter] = useState(0);
     const [mode, setMode] = useState('add');
     const [selectedNote, setSelectedNote] = useState({});
 
 
-    // get notes/idCounter from LS
+    // get notes from LS
     useEffect(() => {
         const storedNotes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_NOTES_KEY));
-        const storedIdCounter = Number(localStorage.getItem(LOCAL_STORAGE_ID_COUNTER_KEY));
 
         if (storedNotes && storedNotes.length > 0) {
             setNotes(storedNotes);
         }
-
-        if (storedIdCounter > 0) {
-            setIdCounter(storedIdCounter);
-        }
     }, []);
 
 
-    // save notes/idCounter to LS
+    // save notes to LS
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_NOTES_KEY, JSON.stringify(notes));
-        localStorage.setItem(LOCAL_STORAGE_ID_COUNTER_KEY, String(idCounter));
-    }, [notes, idCounter]);
+    }, [notes]);
 
 
     // remove selected note styling when going back to NoteAdd
@@ -56,13 +49,11 @@ const Notes = () => {
 
         setNotes(prevState => {
             return [...prevState, {
-                id: idCounter,
+                id: uuidv4(),
                 title: titleInput,
                 body: textareaInput
             }];
         });
-
-        setIdCounter(prevState => prevState + 1);
 
         textareaRef.current.value = '';
     }
@@ -95,7 +86,6 @@ const Notes = () => {
 
     const handleClearAll = () => {
         localStorage.clear();
-        setIdCounter(0);
         setNotes([]);
         setMode('view');
     }
@@ -103,7 +93,7 @@ const Notes = () => {
 
     const handleShowNote = (event) => {
         const noteId = event.target.id
-        const note = notes.filter(note => note.id === Number(noteId));
+        const note = notes.filter(note => note.id === noteId);
 
         setSelectedNote(note[0]);
         setMode('view');
