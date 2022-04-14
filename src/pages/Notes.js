@@ -87,6 +87,9 @@ const Notes = () => {
 
     const handleClearAll = () => {
         localStorage.clear();
+        setIdCounter(0);
+        setNotes([]);
+        setMode('view');
     }
 
 
@@ -101,17 +104,21 @@ const Notes = () => {
 
     const getNotes = () => {
         if (!notes.length) {
-            return 'add a note';
+            return 'No notes yet';
         } else {
-            return notes.map(note => {
-                return (
-                    <li className="notes__item"
-                        key={note.id} id={note.id}
-                        onClick={handleShowNote}>
-                        {note.title}
-                    </li>
-                )
-            })
+            return (
+                <ul className="notes__list">
+                    {notes.map(note => {
+                        return (
+                            <li className="notes__item"
+                                key={note.id} id={note.id}
+                                onClick={handleShowNote}>
+                                {note.title}
+                            </li>
+                        )
+                    })}
+                </ul>
+            )
         }
     }
 
@@ -142,9 +149,7 @@ const Notes = () => {
             <h1 className="page-title">Notes</h1>
 
             <div className="flex-wrapper notes">
-                <ul className="notes__list">
-                    {getNotes()}
-                </ul>
+                {getNotes()}
 
                 {getModeContent()}
 
