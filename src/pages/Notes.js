@@ -64,6 +64,7 @@ const Notes = () => {
         const newNotes = notes.filter(note => note.id !== noteId);
 
         setNotes(newNotes);
+        setMode('add');
     }
 
 
