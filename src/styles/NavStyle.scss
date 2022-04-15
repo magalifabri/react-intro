@@ -1,5 +1,5 @@
 .nav {
-    margin-bottom: 2rem;
+    margin: 0 -1rem 2rem;
 
     &__list {
         margin: 0;
@@ -9,6 +9,11 @@
         flex-direction: row;
         justify-content: right;
         gap: 1rem;
+    }
+
+    // negate general styling
+    &__item {
+        line-height: initial;
     }
 
     &__link {
