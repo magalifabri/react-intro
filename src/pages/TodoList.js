@@ -36,8 +36,12 @@ const TodoList = ({todos, setTodos}) => {
 
 
     const handleClearAllTodos = () => {
-        localStorage.removeItem(LOCAL_STORAGE_TODOS_KEY);
-        setTodos([]);
+        const response = window.confirm("Are you sure you want to clear all to-do's?");
+
+        if (response) {
+            localStorage.removeItem(LOCAL_STORAGE_TODOS_KEY);
+            setTodos([]);
+        }
     }
 
 
@@ -111,7 +115,7 @@ const TodoList = ({todos, setTodos}) => {
 
     return (
         <>
-            <h1 className="page-title">To-Do List</h1>
+            <h1 className="page-title">To-Do</h1>
 
             <div className="flex-wrapper todo-app">
                 <div className="todo-app__todos-left">
@@ -130,6 +134,20 @@ const TodoList = ({todos, setTodos}) => {
                     })}
                 </div>
 
+                <div className="button-row">
+                    <button className="button-style-1"
+                            onClick={handleClearCompletedTodos}>
+                        clear completed
+                    </button>
+
+                    <button className="button-style-1 button-style-1--danger"
+                            onClick={handleClearAllTodos}>
+                        clear all
+                    </button>
+                </div>
+
+                <p className="big-text">Add a To-Do</p>
+
                 <div className="input-wrapper">
                     <label className="input-wrapper__label"
                            htmlFor="todo">to-do</label>
@@ -145,21 +163,9 @@ const TodoList = ({todos, setTodos}) => {
                     <DatePicker onChange={setPickedDate} value={pickedDate}/>
                 </div>
 
-                <div className="button-row">
-                    <button className="button-style-1 button-style-1--big-font"
-                            onClick={handleAddTodo}>
-                        +
-                    </button>
-
-                    <button className="button-style-1"
-                            onClick={handleClearCompletedTodos}>
-                        clear completed
-                    </button>
-                </div>
-
-                <button className="button-style-1 button-style-1--danger"
-                        onClick={handleClearAllTodos}>
-                    clear all
+                <button className="button-style-1"
+                        onClick={handleAddTodo}>
+                    add
                 </button>
             </div>
         </>
