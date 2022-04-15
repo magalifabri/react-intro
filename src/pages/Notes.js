@@ -92,9 +92,13 @@ const Notes = () => {
 
 
     const handleClearAll = () => {
-        localStorage.removeItem(LOCAL_STORAGE_NOTES_KEY);
-        setNotes([]);
-        setMode('view');
+        const response = window.confirm("Are you sure you want to clear all notes?");
+
+        if (response) {
+            localStorage.removeItem(LOCAL_STORAGE_NOTES_KEY);
+            setNotes([]);
+            setMode('view');
+        }
     }
 
 
