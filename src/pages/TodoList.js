@@ -56,25 +56,6 @@ const TodoList = ({todos, setTodos}) => {
     }
 
 
-    const getTodoStatusString = () => {
-        if (!todos.length) {
-            return 'add a todo';
-        }
-
-        const numUncompletedTodos = todos.filter(
-            todo => !todo.complete
-        ).length;
-
-        if (!numUncompletedTodos) {
-            return 'all done!';
-        } else if (numUncompletedTodos === 1) {
-            return '1 todo left';
-        } else {
-            return numUncompletedTodos + ' todos left';
-        }
-    }
-
-
     const handleClearCompletedTodos = () => {
         const newTodos = todos.filter(
             todo => !todo.complete
@@ -113,45 +94,72 @@ const TodoList = ({todos, setTodos}) => {
     }
 
 
+    const getTodoStatusString = () => {
+        const numUncompletedTodos = todos.filter(
+            todo => !todo.complete
+        ).length;
+
+        let message;
+
+        if (!numUncompletedTodos) {
+            message = 'all done!';
+        } else if (numUncompletedTodos === 1) {
+            message = '1 todo left';
+        } else {
+            message = numUncompletedTodos + ' todos left';
+        }
+
+        return (
+            <div className="todo-app__todos-left">
+                <p>{message}</p>
+            </div>
+        )
+    }
+
+
     return (
         <>
             <h1 className="page-title">To-Do</h1>
 
             <div className="flex-wrapper todo-app">
-                <div className="todo-app__todos-left">
-                    {getTodoStatusString()}
-                </div>
+                {todos.length > 0 &&
+                    <>
+                        {getTodoStatusString()}
 
-                <div className="todo-app__todo-list">
-                    {todos.map(todo => {
-                        return <Todo
-                            key={todo.id}
-                            todo={todo}
-                            toggleTodo={toggleTodo}
-                            editTodo={editTodo}
-                            setNewToFalse={setNewToFalse}
-                        />
-                    })}
-                </div>
+                        <div className="todo-app__todo-list">
+                            {todos.map(todo => {
+                                return <Todo
+                                    key={todo.id}
+                                    todo={todo}
+                                    toggleTodo={toggleTodo}
+                                    editTodo={editTodo}
+                                    setNewToFalse={setNewToFalse}
+                                />
+                            })}
+                        </div>
 
-                <div className="button-row">
-                    <button className="button-style-1"
-                            onClick={handleClearCompletedTodos}>
-                        clear completed
-                    </button>
+                        <div className="button-row">
+                            <button className="button-style-1"
+                                    onClick={handleClearCompletedTodos}>
+                                clear completed
+                            </button>
 
-                    <button className="button-style-1 button-style-1--danger"
-                            onClick={handleClearAllTodos}>
-                        clear all
-                    </button>
-                </div>
+                            <button
+                                className="button-style-1 button-style-1--danger flex-initial"
+                                onClick={handleClearAllTodos}>
+                                clear all
+                            </button>
+                        </div>
+                    </>
+                }
 
-                <p className="big-text">Add a To-Do</p>
+                <p className="big-text">Add To-Do</p>
 
                 <div className="input-wrapper">
                     <label className="input-wrapper__label"
                            htmlFor="todo">to-do</label>
                     <input className="input-wrapper__input" id="todo"
+                           autoComplete="off"
                            ref={todoNameRef} onKeyDown={handleKeyDown}
                            type="text"/>
                 </div>
@@ -160,7 +168,8 @@ const TodoList = ({todos, setTodos}) => {
                     <label className="input-wrapper__label">
                         put to-do on calendar (optional)
                     </label>
-                    <DatePicker onChange={setPickedDate} value={pickedDate}/>
+                    <DatePicker onChange={setPickedDate}
+                                value={pickedDate}/>
                 </div>
 
                 <button className="button-style-1"

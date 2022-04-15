@@ -38,7 +38,7 @@ p {
 }
 
 .big-text {
-    margin: 1rem 0 .5rem;
+    margin-top: 1rem;
 
     font-size: 1.25rem;
     font-weight: 700;
@@ -48,7 +48,7 @@ p {
     margin: .5rem 0 1rem;
 
     text-transform: uppercase;
-    font-size: .85rem;
+    font-size: .75rem;
     font-weight: 600;
     color: gray;
 }
@@ -143,6 +143,9 @@ label + button {
         background-color: #fff;
         color: red;
         font-weight: 900;
+    }
+
+    &--right {
         align-self: flex-end;
     }
 }
@@ -151,11 +154,14 @@ label + button {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    justify-content: right;
 
     & > * {
         flex: 1;
     }
+}
+
+.flex-initial {
+    flex: initial;
 }
 
 .input-wrapper {
