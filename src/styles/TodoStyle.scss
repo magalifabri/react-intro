@@ -1,40 +1,32 @@
 @use 'style';
 
 .todo {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: .5rem;
-
-  &--new {
-    @include style.new-element-slide-in-animation;
-  }
-
-  &__label {
-    cursor: pointer;
     width: 100%;
     display: flex;
+    flex-direction: row;
     align-items: center;
-  }
+    margin-bottom: .5rem;
 
-  &__input {
-    padding: 0 .5rem;
-    flex: 1;
+    &--new {
+        @include style.new-element-slide-in-animation;
+    }
 
-    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.53);
-    background-color: #f8f8f8;
-    border: none;
-    border-radius: 3px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
-  }
+    &__label {
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
 
-  &__edit-button {
-    cursor: pointer;
-    padding: .1rem .3rem;
-    background-color: #e1e1e1;
-    border: none;
-    border-radius: 3px;
-  }
+    &__input {
+        padding: 0 .5rem;
+        flex: 1;
+
+        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.53);
+        background-color: #f8f8f8;
+        border: none;
+        border-radius: 3px;
+        font-family: 'Nunito', sans-serif;
+        font-size: 1rem;
+    }
 }

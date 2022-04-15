@@ -18,7 +18,7 @@ $blackish: #000;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 body {
@@ -149,6 +149,16 @@ label + button {
     &--right {
         align-self: flex-end;
     }
+}
+
+.button-style-2 {
+    cursor: pointer;
+    padding: .1rem .3rem;
+    background-color: #e1e1e1;
+    border: none;
+    border-radius: 3px;
+
+    font-family: 'Nunito', sans-serif;
 }
 
 .button-row {
