@@ -12,6 +12,27 @@ const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
     }
 
 
+    // input field lost focus
+    // check if it lost focus because the edit button of the related input field was clicked
+    // if so, do nothing, because handleEdit() will handle it
+    // if not, toggle edit mode as 'click-away'
+
+    const handleBlur = (e) => {
+        const clickedOnEditButton = e?.relatedTarget?.className === 'button-style-2';
+
+        if (clickedOnEditButton) {
+            const editButtonId = e?.relatedTarget?.parentElement?.id;
+            const todoId = e?.nativeEvent?.path[2]?.id;
+
+            if (editButtonId === todoId) {
+                return;
+            }
+        }
+
+        setEditable(!editable);
+    }
+
+
     const handleEdit = () => {
         setEditable(!editable);
 
@@ -43,6 +64,7 @@ const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
 
     return (
         <div className={todo.new ? "todo todo--new" : "todo"}
+             id={todo.id}
              onAnimationEnd={handleAnimationEnd}>
 
             <label className="todo__label">
@@ -59,14 +81,15 @@ const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
                                ref={editInputRef}
                                defaultValue={todo.name}
                                onKeyDown={handleKeyDown}
-                               onBlur={() => setEditable(false)}
+                               onBlur={handleBlur}
                         /> :
                         todo.name
                 }
             </label>
 
             <button className="button-style-2"
-                    onClick={handleEdit}>
+                    onClick={handleEdit}
+            >
                 ✎
             </button>
         </div>
