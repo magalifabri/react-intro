@@ -1,36 +1,36 @@
-nav {
+.nav {
     margin-bottom: 2rem;
-}
 
-nav ul {
-    margin: 0;
-    list-style: none;
+    &__list {
+        margin: 0;
+        list-style: none;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    gap: 1rem;
-}
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        gap: 1rem;
+    }
 
-nav a {
-    padding: .3rem .6rem;
-    background: linear-gradient(#ffffff 50%, #000000 50%);
-    background-position: 0 5%;
-    background-size: 100% 200%;
+    &__link {
+        padding: .3rem .6rem;
+        background: linear-gradient(#ffffff 50%, #000000 50%);
+        background-position: 0 5%;
+        background-size: 100% 200%;
 
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: .7rem;
-    font-weight: 700;
-    font-family: 'Nunito', sans-serif;
-    letter-spacing: 1px;
-    color: black;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: .7rem;
+        font-weight: 700;
+        font-family: 'Nunito', sans-serif;
+        letter-spacing: 1px;
+        color: black;
 
-    transition: all .3s ease;
-}
+        transition: all .3s ease;
 
-.active {
-    color: white;
-    background-position: 0 100%;
-    border-radius: 3px;
+        &--active {
+            color: white;
+            background-position: 0 100%;
+            border-radius: 3px;
+        }
+    }
 }
