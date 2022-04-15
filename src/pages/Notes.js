@@ -45,7 +45,13 @@ const Notes = () => {
         if (!textareaInput) {
             return;
         }
-        const titleInput = textareaInput.slice(0, 25) + '...';
+
+        let titleInput;
+        if (textareaInput.length > 25) {
+            titleInput = textareaInput.slice(0, 25) + '...';
+        } else {
+            titleInput = textareaInput;
+        }
 
         setNotes(prevState => {
             return [...prevState, {
