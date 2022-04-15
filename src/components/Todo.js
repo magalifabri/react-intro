@@ -58,7 +58,9 @@ const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
                                type="text"
                                ref={editInputRef}
                                defaultValue={todo.name}
-                               onKeyDown={handleKeyDown}/> :
+                               onKeyDown={handleKeyDown}
+                               onBlur={() => setEditable(false)}
+                        /> :
                         todo.name
                 }
             </label>
