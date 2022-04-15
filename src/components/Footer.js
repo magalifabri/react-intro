@@ -46,7 +46,7 @@ const Footer = () => {
 
                     <p className="overlay__p">
                         View source code on <a className="overlay__a"
-                                               href="https://github.com/magalifabri/react-intro/tree/main/src/styles">
+                                               href="https://github.com/magalifabri/react-intro">
                         GitHub</a>.
                     </p>
 
