@@ -174,7 +174,7 @@ const Notes = () => {
 
 
     return (
-        <main>
+        <>
             <h1 className="page-title">Notes</h1>
 
             <div className="flex-wrapper notes">
@@ -186,7 +186,7 @@ const Notes = () => {
                     clear all
                 </button>
             </div>
-        </main>
+        </>
     );
 };
 
