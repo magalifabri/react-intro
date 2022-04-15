@@ -182,7 +182,8 @@ const Notes = () => {
 
                 {getModeContent()}
 
-                <button className="button-style-1 button-style-1--danger" onClick={handleClearAll}>
+                <button className="button-style-1 button-style-1--danger button-style-1--right"
+                        onClick={handleClearAll}>
                     clear all
                 </button>
             </div>
