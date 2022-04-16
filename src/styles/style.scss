@@ -16,6 +16,15 @@ font-family: 'Nunito', sans-serif;
     word-break: break-word;
 }
 
+input,
+textarea,
+button,
+select,
+a,
+li {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 body {
     padding: 1rem 2rem 2rem;
     min-width: 300px;
