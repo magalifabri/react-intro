@@ -91,7 +91,7 @@ label + button {
 
 .button-style-1 {
     cursor: pointer;
-    padding: .5rem 1rem;
+    padding: .4rem .8rem;
 
     background-color: black;
     border: 2px solid black;
@@ -137,12 +137,13 @@ label + button {
     gap: 1rem;
 
     & > * {
-        flex: 1;
+        //flex: 1; // all the same width
+        flex: 1 0 auto;
     }
 }
 
 .flex-initial {
-    flex: initial;
+    flex: initial; // element takes minimal width
 }
 
 .input-wrapper {
