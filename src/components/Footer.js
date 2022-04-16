@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import { GrClose } from 'react-icons/gr';
+
 import '../styles/Footer.scss';
 
 
@@ -43,7 +45,7 @@ const Footer = () => {
                     className="footer__info-button footer__info-button--active button-style-2"
                     onClick={toggleOverlay}
                 >
-                    close
+                    <GrClose/>
                 </button>
                 :
                 <button className="footer__info-button button-style-2"

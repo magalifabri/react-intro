@@ -9,13 +9,23 @@
 
     &__info-button {
         position: relative;
-        z-index: 10;
+        z-index: 1;
 
-        transition: all .1s ease;
+        transition: all .3s ease;
 
         &--active {
-            background-color: variables.$blackish;
-            color: variables.$whitish;
+            background-color: variables.$whitish;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+            svg {
+                display: inline-block; // required for vertical align
+                vertical-align: middle;
+            }
+
+            path {
+                stroke-width: 3px;
+                stroke: black;
+            }
         }
     }
 }
@@ -29,7 +39,7 @@
     bottom: 0;
     right: 0;
 
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, .5);
     backdrop-filter: blur(3px);
 
     justify-content: center;
@@ -44,20 +54,10 @@
         padding: 2rem;
 
         background-color: variables.$whitish;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        border: 1px solid variables.$lightGray;
-        border-radius: 3px;
-    }
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
 
-    &__close-button {
-        cursor: pointer;
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 1rem;
-
-        line-height: 1rem;
-        font-size: 2rem;
+        transition: opacity .3s ease;
     }
 
     &__p + &__p {
