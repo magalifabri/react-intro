@@ -1,4 +1,5 @@
 import React, {useState, useRef} from 'react';
+import { GrFormEdit } from 'react-icons/gr';
 import '../styles/TodoStyle.scss';
 
 
@@ -18,7 +19,7 @@ const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
     // if not, toggle edit mode as 'click-away'
 
     const handleBlur = (e) => {
-        const clickedOnEditButton = e?.relatedTarget?.className === 'button-style-2';
+        const clickedOnEditButton = e?.relatedTarget?.classList[0] === 'button-style-2';
 
         if (clickedOnEditButton) {
             const editButtonId = e?.relatedTarget?.parentElement?.id;
@@ -87,10 +88,11 @@ const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
                 }
             </label>
 
+            {/* button-style-2 being the first class is important for handleBlur() */}
             <button className="button-style-2 todo__button"
                     onClick={handleEdit}
             >
-                ✎
+                <GrFormEdit className="todo__button-img"/>
             </button>
         </div>
     );
