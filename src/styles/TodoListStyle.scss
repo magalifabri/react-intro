@@ -1,4 +1,4 @@
-@use 'style';
+@use 'variables';
 
 .todo-app {
 
@@ -11,5 +11,5 @@
 }
 
 .react-date-picker__wrapper {
-    @include style.input-style-1;
+    @include variables.input-style-1;
 }

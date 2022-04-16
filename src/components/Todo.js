@@ -87,7 +87,7 @@ const Todo = ({todo, toggleTodo, editTodo, setNewToFalse}) => {
                 }
             </label>
 
-            <button className="button-style-2"
+            <button className="button-style-2 todo__button"
                     onClick={handleEdit}
             >
                 ✎

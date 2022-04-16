@@ -1,4 +1,4 @@
-@use 'style';
+@use 'variables';
 
 .footer {
     margin-top: 3rem;
@@ -12,8 +12,8 @@
         z-index: 10;
 
         &--active {
-            background-color: style.$blackish;
-            color: style.$whitish;
+            background-color: variables.$blackish;
+            color: variables.$whitish;
         }
     }
 }
@@ -42,9 +42,9 @@
         margin: 2rem;
         padding: 2rem;
 
-        background-color: style.$whitish;
+        background-color: variables.$whitish;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        border: 1px solid style.$lightGray;
+        border: 1px solid variables.$lightGray;
         border-radius: 3px;
     }
 

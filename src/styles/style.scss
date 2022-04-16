@@ -1,15 +1,10 @@
+@use 'variables';
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /*
 font-family: 'Nunito', sans-serif;
 */
-
-
-$accent: #bbe7f1;
-$accentDarker: #5fbdd3;
-$lightGray: #bebebe;
-$whitish: #fff;
-$blackish: #000;
 
 
 // GENERAL STYLING
@@ -70,40 +65,6 @@ input[type="checkbox"] {
 
 label + button {
     margin-left: .5rem;
-}
-
-
-// MIXINS
-
-@mixin input-style-1 {
-    padding: .5rem;
-    margin: .5rem 0;
-
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #bebebe;
-    border-radius: 3px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
-
-    &:focus {
-        outline: 3px solid $accent;
-    }
-}
-
-@mixin new-element-slide-in-animation {
-    animation: new-element-slide-in-animation .5s ease;
-    animation-fill-mode: forwards;
-
-    @keyframes new-element-slide-in-animation {
-        from {
-            max-height: 0;
-            opacity: 0
-        }
-        to {
-            max-height: 100px;
-            opacity: 1
-        }
-    }
 }
 
 
@@ -185,6 +146,6 @@ label + button {
     }
 
     &__input {
-        @include input-style-1;
+        @include variables.input-style-1;
     }
 }

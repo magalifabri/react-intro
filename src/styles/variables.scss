@@ -1,0 +1,39 @@
+$accent: #bbe7f1;
+$accentDarker: #5fbdd3;
+$lightGray: #bebebe;
+$whitish: #fff;
+$blackish: #000;
+
+
+// MIXINS
+
+@mixin input-style-1 {
+    padding: .5rem;
+    margin: .5rem 0;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #bebebe;
+    border-radius: 3px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+
+    &:focus {
+        outline: 3px solid $accent;
+    }
+}
+
+@mixin new-element-slide-in-animation {
+    animation: new-element-slide-in-animation .5s ease;
+    animation-fill-mode: forwards;
+
+    @keyframes new-element-slide-in-animation {
+        from {
+            max-height: 0;
+            opacity: 0
+        }
+        to {
+            max-height: 100px;
+            opacity: 1
+        }
+    }
+}

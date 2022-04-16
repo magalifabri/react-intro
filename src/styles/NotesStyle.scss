@@ -1,9 +1,9 @@
-@use 'style';
+@use 'variables';
 
 .notes {
 
     &__item {
-        text-decoration: underline solid style.$accent 3px;
+        text-decoration: underline solid variables.$accent 3px;
         cursor: pointer;
         transition: all .3s ease;
 
@@ -13,11 +13,11 @@
         }
 
         &--new {
-            @include style.new-element-slide-in-animation;
+            @include variables.new-element-slide-in-animation;
         }
     }
 
     &__textarea {
-        @include style.input-style-1;
+        @include variables.input-style-1;
     }
 }
