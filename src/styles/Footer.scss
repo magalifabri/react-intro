@@ -11,6 +11,8 @@
         position: relative;
         z-index: 10;
 
+        transition: all .1s ease;
+
         &--active {
             background-color: variables.$blackish;
             color: variables.$whitish;
@@ -19,22 +21,21 @@
 }
 
 .overlay {
-    display: none;
+    opacity: 0;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 
-    &--active {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+    background-color: rgba(0, 0, 0, .2);
+    backdrop-filter: blur(3px);
 
-        background-color: rgba(0, 0, 0, .2);
-        backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
 
-        justify-content: center;
-        align-items: center;
-    }
+    transition: opacity .1s ease;
 
     &__window {
         position: relative;
