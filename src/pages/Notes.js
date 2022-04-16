@@ -81,7 +81,11 @@ const Notes = () => {
             if (note.id === noteId) {
                 const editTextareaInput = editTextareaRef.current.value;
 
-                note.title = editTextareaInput.slice(0, 25) + '...';
+                if (editTextareaInput.length > 25) {
+                    note.title = editTextareaInput.slice(0, 25) + '...';
+                } else {
+                    note.title = editTextareaInput;
+                }
                 note.body = editTextareaInput;
             }
         });
