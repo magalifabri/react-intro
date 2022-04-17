@@ -77,7 +77,7 @@ const Notes = () => {
     const handleEditNote = (noteId) => {
         const newNotes = [...notes];
 
-        newNotes.map(note => {
+        newNotes.forEach(note => {
             if (note.id === noteId) {
                 const editTextareaInput = editTextareaRef.current.value;
 
@@ -183,6 +183,9 @@ const Notes = () => {
             case 'add':
                 return <NoteAdd textareaRef={textareaRef}
                                 handleAddNote={handleAddNote}/>
+
+            default:
+                return;
         }
     }
 
