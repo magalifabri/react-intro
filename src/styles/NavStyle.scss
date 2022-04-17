@@ -1,3 +1,5 @@
+@use 'variables';
+
 .nav {
     margin: 0 -1rem 2rem;
 
@@ -11,14 +13,13 @@
         gap: 1rem;
     }
 
-    // negate general styling
     &__item {
-        line-height: initial;
+        line-height: initial; // negate general styling
     }
 
     &__link {
         padding: .3rem .6rem;
-        background: linear-gradient(#ffffff 50%, #000000 50%);
+        background: linear-gradient(variables.$whitish 50%, variables.$blackish 50%);
         background-position: 0 5%;
         background-size: 100% 200%;
 
@@ -28,12 +29,12 @@
         font-weight: 700;
         font-family: 'Nunito', sans-serif;
         letter-spacing: 1px;
-        color: black;
+        color: variables.$blackish;
 
         transition: all .3s ease;
 
         &--active {
-            color: white;
+            color: variables.$whitish;
             background-position: 0 100%;
             border-radius: 3px;
         }

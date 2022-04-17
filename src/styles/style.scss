@@ -32,6 +32,9 @@ body {
     margin: 0 auto;
 
     font-family: 'Nunito', sans-serif;
+    color: variables.$blackish;
+
+    background-color: variables.$whitish;
 }
 
 h1 {
@@ -93,12 +96,12 @@ label + button {
     cursor: pointer;
     padding: .4rem .8rem;
 
-    background-color: black;
-    border: 2px solid black;
+    background-color: variables.$blackish;
+    border: 2px solid variables.$blackish;
 
     border-radius: 3px;
 
-    color: white;
+    color: variables.$whitish;
     text-transform: uppercase;
     font-size: .65rem;
     font-family: 'Nunito', sans-serif;
@@ -111,7 +114,7 @@ label + button {
 
     &--danger {
         border-color: red;
-        background-color: #fff;
+        background-color: variables.$whitish;
         color: red;
         font-weight: 900;
     }
