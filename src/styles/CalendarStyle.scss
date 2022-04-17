@@ -13,19 +13,23 @@
 
 // DAY TILE
 
-// month title
-.react-calendar__navigation__label__labelText {
+// month title, cells
+.react-calendar__navigation__label__labelText,
+.react-calendar__tile {
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
+    transition: all .2s ease;
 }
 
-// date numbers
-.react-calendar__month-view__days__day {
-    font-family: 'Nunito', sans-serif;
-    transition: all .1s ease;
-    font-weight: 600;
-
-    &.has-todo {
-        box-shadow:inset 0 0 0 5px variables.$accentDarker;
-    }
+.has-todo abbr {
+    color: variables.$whitish;
+    background-color: variables.$blackish;
+    padding: .1rem .3rem;
+    border-radius: 3px;
+    font-weight: bold;
 }
+
+//.react-calendar__month-view__days__day { // cells on month view
+// abbr { // date number
+// .react-calendar__tile--now { // today
+//.react-calendar__tile--active { // selected tile (doesn't account for focus)
